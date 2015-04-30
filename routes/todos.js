@@ -10,7 +10,9 @@ router.get('/', function(req, res, next) {
         if (err)
             return next(err);
         else
-            return res.json(todos);
+            res.render('todos.ejs', {
+                todos: todos
+        });
     });
 });
 
