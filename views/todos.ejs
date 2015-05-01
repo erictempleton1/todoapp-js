@@ -5,9 +5,16 @@
     <link rel='stylesheet' href='/stylesheets/style.css'/>
   </head>
   <body>
+    <p>
+        <form method="post" action="/todos" method="post">
+          <input type="text" name="content" />
+        </form>
+    </p>
+
     <p>Todo list</p>
         <% todos.forEach(function(todo) { %>
           <h3><%= todo.name %></h3>
+          <h3><%= todo._id %></h3>
         <% }); %>
   </body>
   </html>
