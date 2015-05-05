@@ -52,7 +52,7 @@ router.delete('/:id', function(req, res, next) {
         if (err)
             return next(err);
         else
-            return res.json(post);
+            return res.redirect('/todos');
     });
 });
 

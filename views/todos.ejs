@@ -14,7 +14,12 @@
     <p>Todo list</p>
         <% todos.forEach(function(todo) { %>
           <h3><%= todo.name %></h3>
-          <h3><%= todo._id %></h3>
+        <p>
+            <form method="POST" action="/todos/<%= todo._id %>/?_method=DELETE">
+              <button type="submit">Delete Todo</button>
+            </form>
+        </p>
+    <h3><%= todo._id %></h3>
         <% }); %>
   </body>
   </html
