@@ -11,6 +11,7 @@ var mongoose = require('mongoose');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var todos = require('./routes/todos');
+var edit = require('./routes/edit');
 
 var app = express();
 
@@ -38,6 +39,7 @@ app.use(methodOverride('_method'))
 app.use('/', routes);
 app.use('/users', users);
 app.use('/todos', todos);
+app.use('/edit', edit);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

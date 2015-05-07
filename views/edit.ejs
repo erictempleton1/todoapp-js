@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Todo List</title>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+  </head>
+  <body>
+  <p>Edit Todo</p>
+    <p>
+        <form method="POST" action="/edit/<%= todo_item._id %>/?_method=PUT">
+          <input type="text" name="name" value="<%= todo_item.name %>" />
+        </form>
+    </p>
+  </body>
+</html>

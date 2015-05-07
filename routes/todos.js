@@ -56,10 +56,5 @@ router.delete('/:id', function(req, res, next) {
     });
 });
 
-// pass var test
-router.get('/edit/:id', function(req, res) {
-    var todo_id = req.params.id;
-    res.send(todo_id);
-});
 
 module.exports = router;
