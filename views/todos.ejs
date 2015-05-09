@@ -13,16 +13,23 @@
 
     <p>Todo list</p>
         <% todos.forEach(function(todo) { %>
-          <h3><%= todo.name %> (<%= todo._id %>) Completed: <%= todo.completed %></h3>
-        <p>
-            <form method="POST" action="/todos/<%= todo._id %>/?_method=DELETE">
-              <button type="submit">Delete Todo</button>
-            </form>
-        </p>
+            <% if (todo.completed == false) { %>
+              <h3><%= todo.name %> (<%= todo._id %>) Completed: <%= todo.completed %></h3>
+                <p>
+                    <form method="POST" action="/todos/<%= todo._id %>/?_method=DELETE">
+                      <button type="submit">Delete Todo</button>
+                    </form>
+                </p>
 
-        <p>
-            <a href="/edit/<%= todo._id %>">Edit Todo</a>
-        </p>
+                <p>
+                    <a href="/edit/<%= todo._id %>">Edit Todo</a>
+                </p>
+
+                <p>
+                    <form method="POST" action="/edit/<%= todo._id %>/?_method=PUT">
+                        <button type="submit" name="completed" value="true">Completed</button>
+                    </form>
+            <% } %>
         <% }); %>
   </body>
   </html
