@@ -11,27 +11,24 @@
         </form>
     </p>
 
-    <p>Todo list</p>
+    <p>All Todos</p>
         <% todos.forEach(function(todo) { %>
-            <% if (todo.completed == false) { %>
               <h3>
                   <%= todo.name %> (<%= todo._id %>) 
                   Completed: <%= todo.completed %> 
                   Added: <%= todo.added %>
               </h3>
-                <p>
+              <p>
+                <% if (todo.completed == false) { %>
                     <form method="POST" action="/edit/<%= todo._id %>/?_method=PUT">
                         <button type="submit" name="completed" value="true">Completed</button>
                     </form>
-
                     <a href="/edit/<%= todo._id %>">Edit Todo</a>
-
+                <% } %>
                     <form method="POST" action="/todos/<%= todo._id %>/?_method=DELETE">
                       <button type="submit">Delete Todo</button>
                     </form>
-
-                </p>
-            <% } %>
+              </p>
         <% }); %>
   </body>
-  </html
+  </html>
