@@ -12,7 +12,7 @@ router.post('/register', function(req, res) {
     Account.register(new Account({ username: req.body.username }),
         req.body.password, function(err, account) {
             if (err) {
-                return res.render('register', { account: account });
+                return res.render('register.ejs', { account: account });
             }
 
             passport.authenticate('local')(req, res, function () {
@@ -22,7 +22,7 @@ router.post('/register', function(req, res) {
 });
 
 router.get('/login', function(req, res) {
-    res.render('login', { user: req.user });
+    res.render('login.ejs', { user: req.user });
 });
 
 router.post('/login', passport.authenticate('local'), function(req, res) {
