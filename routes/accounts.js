@@ -40,7 +40,7 @@ module.exports = router;
 /* 
 notes:
 
-need to add ejs files for layout
 also need to test
+add more app.use to app.js file
 
 */
