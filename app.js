@@ -6,7 +6,8 @@ var cookieParser = require('cookie-parser');
 var methodOverride = require('method-override')
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var passport = require('passport')
+var passport = require('passport');
+var session = require('express-session');
 var LocalStrategy = require('passport-local').Strategy;
 
 
@@ -37,6 +38,14 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({
+  secret: 'super secret',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {secure: true}
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'))
 
@@ -53,6 +62,12 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
+
+// passport config
+var Account = require('./models/Account');
+passport.use(new LocalStrategy(Account.authenticate()));
+passport.serializeUser(Account.serializeUser());
+passport.deserializeUser(Account.deserializeUser());
 
 // error handlers
 
