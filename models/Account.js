@@ -3,8 +3,7 @@ var passportLocalMongoose = require('passport-local-mongoose');
 
 var Account = mongoose.Schema({
     username: String,
-    password: String,
-    todos: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Todo' }]
+    password: String
 });
 
 Account.plugin(passportLocalMongoose);
