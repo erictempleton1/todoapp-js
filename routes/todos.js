@@ -19,7 +19,10 @@ router.get('/', function(req, res, next) {
 
 // Create todo
 router.post('/', function(req, res, next) {
-    Todo.create(req.body, function(err, post) {
+    Todo.create({
+        name: req.body.name,
+        created_by: req.user.username
+    }, function(err, post) {
         if (err)
             return next(err);
         else
