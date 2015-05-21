@@ -6,7 +6,7 @@ var Todo = require('../models/Todo.js');
 
 
 router.get('/', function(req, res, next) {
-    Todo.find(function(err, todos) {
+    Todo.find({created_by: req.user.username}, function(err, todos) {
         if (req.isAuthenticated())
             res.render('todos.ejs', {
                 todos: todos
