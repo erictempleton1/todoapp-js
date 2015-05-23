@@ -6,13 +6,13 @@ var Todo = require('../models/Todo.js');
 
 // GET todos listing
 router.get('/', function(req, res, next) {
-    Todo.find(function (err, todos) {
-        if (err)
-            return next(err);
-        else
+    Todo.find({created_by: req.user.username}, function (err, todos) {
+        if (req.isAuthenticated())
             res.render('show_all.ejs', {
                 todos: todos
-        });
+            })
+        else
+            res.redirect('/accounts/login')
     });
 });
 
