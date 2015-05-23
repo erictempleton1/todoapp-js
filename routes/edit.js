@@ -4,6 +4,8 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Todo = require('../models/Todo.js');
 
+// todo: restrict edit to logged in creator of item
+
 
 // GET by id
 router.get('/:id', function(req, res, next) {
