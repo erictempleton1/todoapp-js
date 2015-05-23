@@ -6,12 +6,18 @@
   </head>
   <body>
     <p>
+      <a href="/accounts/logout/">Log Out</a>
+    </p>
+    <p>
         <form method="post" action="/todos">
           <input type="text" name="name" />
         </form>
     </p>
 
     <p>All Todos</p>
+    <p>
+    <a href="/todos">Current Todos</a>
+    </p>
         <% todos.forEach(function(todo) { %>
               <h3>
                   <%= todo.name %> (<%= todo._id %>) 

@@ -6,12 +6,16 @@
   </head>
   <body>
     <p>
+      <a href="/accounts/logout/">Log Out</a>
+    </p>
+    <p>
         <form method="post" action="/todos">
           <input type="text" name="name" />
         </form>
     </p>
 
-    <p>Todo list</p>
+    <p>Current Todo list</p>
+    <p><a href="/all">View All</a></p>
         <% todos.forEach(function(todo) { %>
             <% if (todo.completed == false) { %>
               <h3>
