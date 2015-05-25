@@ -9,13 +9,13 @@ var Todo = require('../models/Todo.js');
 
 // GET by id
 router.get('/:id', function(req, res, next) {
-    Todo.findById(req.params.id, function(err, todo_item) {
+    Todo.findOne({created_by: req.user.username})
+    .populate('name')
+    .exec(function(err, todo_item) {
         if (err)
             return next(err);
         else
-            res.render('edit.ejs', {
-                todo_item: todo_item
-        });
+            return res.render('edit.ejs', todo_item);
     });
 });
 
