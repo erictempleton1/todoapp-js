@@ -15,13 +15,15 @@ router.get('/:id', function(req, res, next) {
         if (err)
             return next(err);
         else
-            return res.render('edit.ejs', todo_item);
+            return res.render('edit.ejs',
+                {todo_item: todo_item}
+            );
     });
 });
 
 // Update todo
 router.put('/:id', function(req, res, next) {
-    Todo.findByIdAndUpdate(req.params.id, req.body, function(err, post) {
+    Todo.find(req.params.id, req.body, function(err, post) {
         if (err)
             return next(err);
         else
