@@ -1,8 +1,7 @@
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
 
-var TodoSchema = new Schema({
-    created_by: { type: Schema.Types.ObjectId, ref: 'Account', required: true},
+var TodoSchema = mongoose.Schema({
+    created_by: String,
     name: String,
     completed: { type: Boolean, default: false },
     added: { type: Date, default: Date.now },
