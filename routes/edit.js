@@ -25,7 +25,11 @@ router.get('/:id', function(req, res, next) {
 
 // Update todo
 router.put('/:id', function(req, res, next) {
-    Todo.findByIdAndUpdate(req.params.id, req.body, function(err, post) {
+    //Todo.findByIdAndUpdate(req.params.id, req.body, function(err, post) {
+    Todo.findOne({
+        _id: req.params.id,
+        created_by: req.user.username
+    }, function(err, todo_item) {
         if (err)
             return next(err);
         else
