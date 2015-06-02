@@ -25,7 +25,6 @@ router.get('/:id', function(req, res, next) {
 
 // Update todo
 router.put('/:id', function(req, res, next) {
-    //Todo.findByIdAndUpdate(req.params.id, req.body, function(err, post) {
     Todo.findOne({
         _id: req.params.id,
         created_by: req.user.username
@@ -33,7 +32,12 @@ router.put('/:id', function(req, res, next) {
         if (err)
             return next(err);
         else
+            todo_item.name = req.body.name;
+            todo_item.save(function(err) {
+                if (err) 
+                    return next(err);
             return res.redirect('/todos');
+        });
     });
 });
 
