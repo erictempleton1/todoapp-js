@@ -32,7 +32,11 @@ router.post('/', function(req, res, next) {
 
 // Delete todo
 router.delete('/:id', function(req, res, next) {
-    Todo.findByIdAndRemove(req.params.id, req.body, function(err, post) {
+    //Todo.findByIdAndRemove(req.params.id, req.body, function(err, post) {
+    Todo.remove({
+        _id: req.params.id,
+        created_by: req.user.username
+    }, function(err, todo_item) {
         if (err)
             return next(err);
         else
