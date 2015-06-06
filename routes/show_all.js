@@ -19,7 +19,6 @@ router.get('/', function(req, res, next) {
 
 // Delete todo
 router.delete('/:id', function(req, res, next) {
-    //Todo.findByIdAndRemove(req.params.id, req.body, function(err, post) {
     Todo.remove({
         _id: req.params.id,
         created_by: req.user.username
@@ -27,7 +26,7 @@ router.delete('/:id', function(req, res, next) {
         if (err)
             return next(err);
         else
-            return res.redirect('/todos');
+            return res.redirect('/all');
     });
 });
 
