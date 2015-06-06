@@ -4,6 +4,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Todo = require('../models/Todo.js');
 
+
 // GET todos listing
 router.get('/', function(req, res, next) {
     Todo.find({created_by: req.user.username}, function (err, todos) {
@@ -25,5 +26,6 @@ router.delete('/:id', function(req, res, next) {
             return res.redirect('/todos');
     });
 });
+
 
 module.exports = router;
